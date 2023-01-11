@@ -1,6 +1,4 @@
 const express = require("express");
-const multer = require("multer");
-const path = require("path");
 const {
   createPhoto,
   getPhoto,
@@ -8,19 +6,6 @@ const {
   deletePhoto,
   updatePhoto,
 } = require("../Controllers/galleryController");
-
-const Storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "Uploads");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({
-  storage: Storage,
-});
 
 const router = express.Router();
 
@@ -31,7 +16,7 @@ router.get("/", getPhotos);
 router.get("/:id", getPhoto);
 
 // POST a photo
-router.post("/", upload.single("image"), createPhoto);
+router.post("/", createPhoto);
 
 // DELETE a photo
 router.delete("/:id", deletePhoto);

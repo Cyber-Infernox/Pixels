@@ -4,7 +4,7 @@ import { usePhotosContext } from "../Hooks/usePhotosContext";
 const PhotoForm = () => {
   const { dispatch } = usePhotosContext();
   const [title, setTitle] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,18 +1,19 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Gallery from "./Components/Gallery";
 import Navbar from "./Components/Navbar";
-import PhotoForm from "./Components/PhotoForm";
+// import PhotoForm from "./Components/PhotoForm";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Navbar />
-        <Gallery />
-        <Routes>
-          <Route path="/" element={<PhotoForm />} />
-        </Routes>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );

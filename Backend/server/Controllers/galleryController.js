@@ -16,7 +16,7 @@ const mongoose = require("mongoose");
 
 // GET all photos
 const getPhotos = async (req, res) => {
-  const photos = await Photo.find().sort({ createdAt: -1 });
+  const photos = await Photo.find({}).sort({ createdAt: -1 });
   res.status(200).json(photos);
 };
 

@@ -1,18 +1,32 @@
 const Photo = require("../Models/dbGallery");
 const mongoose = require("mongoose");
-// const multer = require("multer");
+const multer = require("multer");
 // const path = require("path");
 
-// const Storage = multer.diskStorage({
-//   destination: "Uploads",
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname);
-//   },
-// });
+const Storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "Uploads");
+  },
+  filename: (req, file, callback) => {
+    const ext = file.mimetype.split("/")[1];
+    callback(null, `image-${Date.now()}.${ext}`);
+  },
+});
 
-// const upload = multer({
-//   storage: Storage,
-// }).single("image");
+const isImage = (req, file, callback) => {
+  if (file.mimetype.startsWith("image")) {
+    callback(null, true);
+  } else {
+    callback(new Error("Only images are allowed..."));
+  }
+};
+
+const upload = multer({
+  storage: Storage,
+  fileFilter: isImage,
+});
+
+const uploadImage = upload.single("image");
 
 // GET all photos
 const getPhotos = async (req, res) => {
@@ -40,6 +54,7 @@ const getPhoto = async (req, res) => {
 // POST a photo
 const createPhoto = async (req, res) => {
   const { title } = req.body;
+  console.log(req.file, req.body);
 
   try {
     const photo = await Photo.create({ title });
@@ -88,4 +103,11 @@ const updatePhoto = async (req, res) => {
   res.status(200).json(photo);
 };
 
-module.exports = { createPhoto, getPhotos, getPhoto, deletePhoto, updatePhoto };
+module.exports = {
+  uploadImage,
+  createPhoto,
+  getPhotos,
+  getPhoto,
+  deletePhoto,
+  updatePhoto,
+};

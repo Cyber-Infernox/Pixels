@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Gallery from "../Components/Gallery";
-import PhotoForm from "../Components/PhotoForm";
 import { usePhotosContext } from "../Hooks/usePhotosContext";
 
 const Home = () => {
@@ -27,9 +26,6 @@ const Home = () => {
         <h1>Home</h1>
         {photos &&
           photos.map((photo) => <Gallery key={photo._id} photo={photo} />)}
-      </div>
-      <div>
-        <PhotoForm />
       </div>
     </div>
   );

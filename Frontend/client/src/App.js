@@ -1,8 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-// import PhotoForm from "./Components/PhotoForm";
 import Home from "./Pages/Home";
+import PhotoForm from "./Pages/PhotoForm";
+import Welcome from "./Pages/Welcome";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
         <Navbar />
         <div>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Welcome />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/post" element={<PhotoForm />} />
           </Routes>
         </div>
       </BrowserRouter>

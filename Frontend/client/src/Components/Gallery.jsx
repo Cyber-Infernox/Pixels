@@ -1,6 +1,7 @@
 const Gallery = ({ photo }) => {
   return (
     <div>
+      <h1>Hello</h1>
       <h1>Photo title: {photo.title}</h1>
       <p>{photo.date}</p>
       <p>{photo.createdAt}</p>

@@ -3,13 +3,13 @@ export const PhotosContext = createContext();
 
 export const photosReducer = (state, action) => {
   switch (action.type) {
-    case "SET_PHOTO":
+    case "SET_PHOTOS":
       return {
         photos: action.payload,
       };
     case "CREATE_PHOTO":
       return {
-        photos: [action.payload, ...state.workouts],
+        photos: [action.payload, ...state.photos],
       };
     // case "DELETE_PHOTO":
     //   return {

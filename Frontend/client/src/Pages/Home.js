@@ -12,7 +12,9 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({ type: "SET_WORKOUTS", payload: json });
+        console.log("Fetch successful");
+        console.log(json);
+        dispatch({ type: "SET_PHOTOS", payload: json });
       }
     };
 
@@ -24,7 +26,7 @@ const Home = () => {
       <div>
         <h1>Home</h1>
         {photos &&
-          photos.map((photo) => <Gallery key={photo.id} photos={photos} />)}
+          photos.map((photo) => <Gallery key={photo._id} photo={photo} />)}
       </div>
       <div>
         <PhotoForm />

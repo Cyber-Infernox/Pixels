@@ -1,7 +1,6 @@
 const Photo = require("../Models/dbGallery");
 const mongoose = require("mongoose");
 const multer = require("multer");
-// const path = require("path");
 
 const Storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -54,7 +53,6 @@ const getPhoto = async (req, res) => {
 // POST a photo
 const createPhoto = async (req, res) => {
   const { title } = req.body;
-  console.log(req.file, req.body);
 
   try {
     const photo = await Photo.create({ title });

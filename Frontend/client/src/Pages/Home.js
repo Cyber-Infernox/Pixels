@@ -11,8 +11,6 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        console.log("Fetch successful");
-        console.log(json);
         dispatch({ type: "SET_PHOTOS", payload: json });
       }
     };

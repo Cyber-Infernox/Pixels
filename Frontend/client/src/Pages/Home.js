@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      const response = await fetch("/api/gallery");
+      const response = await fetch("/api/gallery/");
       const json = await response.json();
 
       if (response.ok) {

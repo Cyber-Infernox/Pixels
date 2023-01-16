@@ -23,9 +23,10 @@ const PhotoForm = () => {
     };
 
     axios
-      .post("/api/gallery", formData, config)
+      .post("/api/gallery/", formData, config)
       .then((response) => {
         alert("!!Image Uploaded Successfully!!");
+        console.log(formData);
       })
       .catch((err) => {
         console.log("err", err);

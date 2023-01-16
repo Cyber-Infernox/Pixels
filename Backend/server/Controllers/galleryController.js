@@ -1,6 +1,7 @@
 const Photo = require("../Models/dbGallery");
 const mongoose = require("mongoose");
 const multer = require("multer");
+const fs = require("fs");
 
 const Storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -52,15 +53,35 @@ const getPhoto = async (req, res) => {
 
 // POST a photo
 const createPhoto = async (req, res) => {
-  const { title } = req.body;
-
-  try {
-    const photo = await Photo.create({ title });
-    res.status(200).json(photo);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+  const savePhoto = new Photo({
+    title: req.body.title,
+    image: {
+      data: fs.readFileSync("Uploads/" + req.file.filename),
+      contentType: "image/png",
+    },
+  });
+  savePhoto
+    .save()
+    .then((res) => {
+      console.log("Image is saved");
+    })
+    .catch((err) => {
+      console.log("Error has occurred");
+    });
+  res.send("Image is saved");
 };
+
+//   const { title } = req.body;
+//   const image = req.file;
+//   console.log(image);
+
+//   try {
+//     const photo = await Photo.create({ title });
+//     res.status(200).json(photo);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
 
 // DELETE a photo
 const deletePhoto = async (req, res) => {

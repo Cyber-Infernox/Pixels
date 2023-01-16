@@ -13,10 +13,10 @@ const photoSchema = new Schema(
       default: Date.now,
       required: true,
     },
-    // image: {
-    //   data: Buffer,
-    //   contentType: String,
-    // },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
   },
   { timestamps: true }
 );

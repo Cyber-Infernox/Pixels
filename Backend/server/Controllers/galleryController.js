@@ -21,9 +21,12 @@ const isImage = (req, file, callback) => {
   }
 };
 
+// const maxSize = 1 * 1024 * 1024; //   1 MB
+
 const upload = multer({
   storage: Storage,
   fileFilter: isImage,
+  // limits: { fileSize: 1048576 },
 });
 
 const uploadImage = upload.single("image");

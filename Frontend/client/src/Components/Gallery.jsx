@@ -5,16 +5,16 @@ const Gallery = ({ photo }) => {
 
   return (
     <div>
-      <h1>Photo title: {photo.title}</h1>
-      <div>
+      {/* <h1>Photo title: {photo.title}</h1> */}
+      <div className="w-full">
         <img
-          className=""
+          className="mb-2"
           src={`data:image/png;base64,${base64String}`}
           alt="baabtra.com"
         />
       </div>
-      <p>{photo.date}</p>
-      <p>{photo.createdAt}</p>
+      {/* <p>{photo.date}</p> */}
+      {/* <p>{photo.createdAt}</p> */}
     </div>
   );
 };

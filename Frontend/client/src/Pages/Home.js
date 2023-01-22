@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Gallery from "../Components/Gallery";
 import { usePhotosContext } from "../Hooks/usePhotosContext";
+import "./Styles/Home.css";
 
 const Home = () => {
   const { photos, dispatch } = usePhotosContext();
@@ -20,8 +21,8 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        <h1>Home</h1>
+      <h1>Home</h1>
+      <div id="Gallery" className="">
         {photos &&
           photos.map((photo) => <Gallery key={photo._id} photo={photo} />)}
       </div>

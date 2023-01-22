@@ -21,7 +21,9 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1 id="head" className="text-center font-bold pt-16 pb-10 text-3xl">
+        Pixels
+      </h1>
       <div id="Gallery" className="">
         {photos &&
           photos.map((photo) => <Gallery key={photo._id} photo={photo} />)}

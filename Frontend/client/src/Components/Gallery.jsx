@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "./Styles/Gallery.css";
 
 const Gallery = ({ photo }) => {
@@ -26,16 +27,32 @@ const Gallery = ({ photo }) => {
         {/* <h1>Photo title: {photo.title}</h1> */}
         <div
           id="pics"
-          className={isHovering ? "hover" : "noHover"}
-          onClick={() => setModel(true)}
+          className="relative"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
           <img
+            className=""
             src={`data:image/png;base64,${base64String}`}
             alt="baabtra.com"
           />
-          <OpenInFullIcon />
+          <div className="absolute inset-0 hover:bg-gray-900 hover:bg-opacity-75 transition ease-in-out duration-700">
+            <div
+              id="svge"
+              className={
+                isHovering
+                  ? "flex h-full items-center justify-center relative"
+                  : "hidden"
+              }
+            >
+              <OpenInFullIcon
+                className="mr-14"
+                sx={{ color: "white" }}
+                onClick={() => setModel(true)}
+              />
+              <DeleteIcon sx={{ color: "white" }} />
+            </div>
+          </div>
         </div>
         {/* <p>{photo.date}</p> */}
         {/* <p>{photo.createdAt}</p> */}

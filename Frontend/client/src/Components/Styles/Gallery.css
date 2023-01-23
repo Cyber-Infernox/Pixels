@@ -54,27 +54,3 @@
   padding: 20px 0 20px;
   margin: 0 auto;
 }
-
-/* hover */
-.hover {
-  background-color: black;
-}
-
-.hover img {
-  transition: opacity 0.4s ease, transform 0.5s ease-in-out;
-  opacity: 0.4;
-}
-
-.hover svg {
-  color: aliceblue;
-  position: absolute;
-  background-color: red;
-}
-
-.noHover {
-  background-color: black;
-}
-
-.noHover svg {
-  display: none;
-}

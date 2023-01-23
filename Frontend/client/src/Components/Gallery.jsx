@@ -1,12 +1,25 @@
 import { useState } from "react";
+import { usePhotosContext } from "../Hooks/usePhotosContext";
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./Styles/Gallery.css";
 
 const Gallery = ({ photo }) => {
+  const { dispatch } = usePhotosContext();
   const [model, setModel] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+
+  const handleDelete = async () => {
+    const response = await fetch("/api/gallery/" + photo._id, {
+      method: "DELETE",
+    });
+    const json = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: "DELETE_PHOTO", payload: json });
+    }
+  };
 
   const base64String = btoa(
     String.fromCharCode(...new Uint8Array(photo.image.data.data))
@@ -50,7 +63,7 @@ const Gallery = ({ photo }) => {
                 sx={{ color: "white" }}
                 onClick={() => setModel(true)}
               />
-              <DeleteIcon sx={{ color: "white" }} />
+              <DeleteIcon sx={{ color: "white" }} onClick={handleDelete} />
             </div>
           </div>
         </div>

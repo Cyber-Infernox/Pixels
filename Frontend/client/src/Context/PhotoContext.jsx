@@ -11,10 +11,10 @@ export const photosReducer = (state, action) => {
       return {
         photos: [action.payload, ...state.photos],
       };
-    // case "DELETE_PHOTO":
-    //   return {
-    //     photos: state.photos.filter((w) => w._id !== action.payload._id),
-    //   };
+    case "DELETE_PHOTO":
+      return {
+        photos: state.photos.filter((w) => w._id !== action.payload._id),
+      };
     default:
       return state;
   }

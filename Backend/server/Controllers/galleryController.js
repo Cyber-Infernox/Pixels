@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const Storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "Uploads");
+    callback(null, "uploads");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];

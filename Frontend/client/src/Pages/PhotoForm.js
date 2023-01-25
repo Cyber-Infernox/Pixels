@@ -60,25 +60,38 @@ const PhotoForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Add a new picture</h3>
-
-      <label>Picture Title</label>
-      <input
-        type="text"
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-      />
-      <label>Add Single Picture</label>
-      <input
-        onChange={(e) => setImage(e.target.files[0])}
-        type="file"
-        name="image"
-      />
-      {/* <label>Add Multiple Pictures</label>
+      <div className="flex justify-center items-center h-96">
+        <div className="flex flex-col justify-center items-center rounded-xl bg-cyan-200 px-10 py-5">
+          <div className="text-xl text-left font-bold w-full pl-5 mb-7 pt-4">
+            <h3>Add a new picture</h3>
+          </div>
+          <div className="flex items-center w-full pl-5 mb-5">
+            <label className="pr-4">Picture Title</label>
+            <input
+              className="w-64 pr-5 h-8 rounded-lg border-2 border-black px-2 bg-slate-200 hover:bg-white"
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+          </div>
+          <div className="flex items-center w-full pl-5 mb-10">
+            <label className="pr-4">Add Single Picture</label>
+            <input
+              className="pr-5"
+              onChange={(e) => setImage(e.target.files[0])}
+              type="file"
+              name="image"
+            />
+          </div>
+          {/* <label>Add Multiple Pictures</label>
       <input multiple onChange={(e) => setImage(e.target.files)} type="file" /> */}
 
-      <button>Submit</button>
-      {/* {error && <div>{error}</div>} */}
+          <button className="bg-gray-300 hover:bg-gray-500 hover:text-cyan-50 py-2 px-4 rounded-xl mb-3 text-lg">
+            Submit
+          </button>
+          {/* {error && <div>{error}</div>} */}
+        </div>
+      </div>
     </form>
   );
 };

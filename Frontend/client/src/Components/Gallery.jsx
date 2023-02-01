@@ -21,7 +21,7 @@ const Gallery = ({ photo }) => {
     }
   };
 
-  function Uint8ToString(u8a) {
+  function Uint16ToString(u8a) {
     var CHUNK_SZ = 0x8000;
     var c = [];
     for (var i = 0; i < u8a.length; i += CHUNK_SZ) {
@@ -31,7 +31,7 @@ const Gallery = ({ photo }) => {
   }
 
   const array = new Uint16Array(photo.image.data.data);
-  const base64String = btoa(Uint8ToString(array));
+  const base64String = btoa(Uint16ToString(array));
 
   return (
     <>

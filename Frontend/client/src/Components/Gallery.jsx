@@ -3,6 +3,7 @@ import { usePhotosContext } from "../Hooks/usePhotosContext";
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import DeleteIcon from "@mui/icons-material/Delete";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import "./Styles/Gallery.css";
 
 const Gallery = ({ photo }) => {
@@ -70,6 +71,11 @@ const Gallery = ({ photo }) => {
                 className="mr-14"
                 sx={{ color: "white" }}
                 onClick={() => setModel(true)}
+              />
+              <FavoriteBorderIcon
+                className="mr-14"
+                sx={{ color: "white" }}
+                onClick={handleDelete}
               />
               <DeleteIcon sx={{ color: "white" }} onClick={handleDelete} />
             </div>

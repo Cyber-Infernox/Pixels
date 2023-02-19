@@ -75,7 +75,7 @@ const Gallery = ({ photo }) => {
               <FavoriteBorderIcon
                 className="mr-14"
                 sx={{ color: "white" }}
-                onClick={handleDelete}
+                // onClick={handleDelete}
               />
               <DeleteIcon sx={{ color: "white" }} onClick={handleDelete} />
             </div>

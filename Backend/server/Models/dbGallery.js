@@ -17,6 +17,7 @@ const photoSchema = new Schema(
       data: Buffer,
       contentType: String,
     },
+    // likes: [{ type: ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );

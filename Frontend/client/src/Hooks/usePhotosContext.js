@@ -1,5 +1,5 @@
-import { PhotosContext } from "../Context/PhotoContext";
 import { useContext } from "react";
+import { PhotosContext } from "../Context/PhotoContext";
 
 export const usePhotosContext = () => {
   const context = useContext(PhotosContext);

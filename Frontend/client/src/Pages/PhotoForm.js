@@ -2,7 +2,7 @@ import { useState } from "react";
 // import { usePhotosContext } from "../Hooks/usePhotosContext";
 import axios from "axios";
 
-const PhotoForm = () => {
+function PhotoForm() {
   // const { dispatch } = usePhotosContext();
   const [title, setTitle] = useState("");
   // const [error, setError] = useState(null);
@@ -94,6 +94,6 @@ const PhotoForm = () => {
       </div>
     </form>
   );
-};
+}
 
 export default PhotoForm;

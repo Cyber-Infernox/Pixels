@@ -3,7 +3,7 @@ import Gallery from "../Components/Gallery";
 import { usePhotosContext } from "../Hooks/usePhotosContext";
 import "./Styles/Home.css";
 
-const Home = () => {
+function Home() {
   const { photos, dispatch } = usePhotosContext();
 
   useEffect(() => {
@@ -30,6 +30,6 @@ const Home = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Home;

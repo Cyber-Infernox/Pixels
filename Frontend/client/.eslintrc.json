@@ -24,12 +24,19 @@
         "avoidEscape": true
       }
     ],
+    "no-console": ["off"],
+    "react/prop-types": ["off"],
+    "react/jsx-no-constructed-context-values": ["off"],
+    "import/prefer-default-export": ["off"],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react/jsx-uses-react": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-props-no-spreading": ["warn"],
     "react/jsx-filename-extension": ["off"],
     "jsx-a11y/label-has-associated-control": ["off"],
     "react/button-has-type": ["off"],
+    "react/function-component-definition": ["off"],
+    "react/self-closing-comp": ["off"],
     "no-shadow": "off"
   }
 }

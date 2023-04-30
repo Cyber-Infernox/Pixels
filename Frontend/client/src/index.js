@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PhotosContextProvider } from "./Context/PhotoContext";
+import { AuthContextProvider } from "./Context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PhotosContextProvider>
-      <App />
-    </PhotosContextProvider>
+    <AuthContextProvider>
+      <PhotosContextProvider>
+        <App />
+      </PhotosContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
 );
 

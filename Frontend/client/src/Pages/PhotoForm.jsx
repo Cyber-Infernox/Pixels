@@ -75,15 +75,17 @@ function PhotoForm() {
               value={title}
             />
           </div>
-          <div className="flex items-center w-full pl-5 mb-10">
-            <label className="pr-4">Add Single Picture</label>
+          <label htmlFor="file" className="flex items-center w-full pl-5 mb-10">
+            <span className="pr-4 hover:cursor-pointer">Post</span>
             <input
+              style={{ display: "none" }}
               className="pr-5"
-              onChange={(e) => setImage(e.target.files[0])}
               type="file"
+              id="file"
+              onChange={(e) => setImage(e.target.files[0])}
               name="image"
             />
-          </div>
+          </label>
           {/* <label>Add Multiple Pictures</label>
       <input multiple onChange={(e) => setImage(e.target.files)} type="file" /> */}
 

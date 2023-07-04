@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { useLogout } from "../Hooks/useLogout";
-import { useAuthContext } from "../Hooks/useAuthContext";
+
+import { useAuthContext } from "../../Hooks/useAuthContext";
+import { useLogout } from "../../Hooks/useLogout";
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -19,11 +20,19 @@ const Navbar = () => {
         <ul className="flex justify-center items-center text-cyan-50 mr-32 uppercase">
           {["home", "about", "post", "contact"].map((item) => (
             <li className="pr-8" key={`link-${item}`}>
-              <Link to={`/${item}`}>{item}</Link>
+              {user && <Link to={`/${item}`}>{item}</Link>}
             </li>
           ))}
-          {!user && <div className="pr-8 cursor-pointer">LOGIN</div>}
-          {!user && <div className="pr-8 cursor-pointer">SIGNUP</div>}
+          {!user && (
+            <div className="pr-8 cursor-pointer">
+              <Link to="/login">LOGIN</Link>
+            </div>
+          )}
+          {!user && (
+            <div className="pr-8 cursor-pointer">
+              <Link to="/signup">SIGNUP</Link>
+            </div>
+          )}
           {user && (
             <div>
               <button onClick={handleLogout} className="pr-8 cursor-pointer">

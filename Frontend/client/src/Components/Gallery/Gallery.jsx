@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { usePhotosContext } from "../Hooks/usePhotosContext";
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import "./Styles/Gallery.css";
+
+import { useState } from "react";
+
+import { usePhotosContext } from "../../Hooks/usePhotosContext";
+import "./Gallery.css";
 
 const Gallery = ({ photo }) => {
   const { dispatch } = usePhotosContext();
@@ -23,9 +25,9 @@ const Gallery = ({ photo }) => {
   };
 
   function Uint16ToString(u8a) {
-    var CHUNK_SZ = 0x8000;
-    var c = [];
-    for (var i = 0; i < u8a.length; i += CHUNK_SZ) {
+    const CHUNK_SZ = 0x8000;
+    const c = [];
+    for (let i = 0; i < u8a.length; i += CHUNK_SZ) {
       c.push(String.fromCharCode.apply(null, u8a.subarray(i, i + CHUNK_SZ)));
     }
     return c.join("");

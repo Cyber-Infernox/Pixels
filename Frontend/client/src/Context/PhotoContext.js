@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+
 export const PhotosContext = createContext();
 
 export const photosReducer = (state, action) => {

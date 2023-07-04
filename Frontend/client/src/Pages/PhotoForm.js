@@ -1,6 +1,7 @@
 import { useState } from "react";
-// import { usePhotosContext } from "../Hooks/usePhotosContext";
 import axios from "axios";
+
+// import { usePhotosContext } from "../Hooks/usePhotosContext";
 
 function PhotoForm() {
   // const { dispatch } = usePhotosContext();
@@ -24,7 +25,7 @@ function PhotoForm() {
 
     axios
       .post("/api/gallery/", formData, config)
-      .then((response) => {
+      .then(() => {
         alert("!!Image Uploaded Successfully!!");
         console.log(formData);
       })

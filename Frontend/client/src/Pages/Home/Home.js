@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import Gallery from "../Components/Gallery";
-import { usePhotosContext } from "../Hooks/usePhotosContext";
-import "./Styles/Home.css";
+
+import { usePhotosContext } from "../../Hooks/usePhotosContext";
+import Gallery from "../../Components/Gallery/Gallery";
+import "./Home.css";
 
 function Home() {
   const { photos, dispatch } = usePhotosContext();

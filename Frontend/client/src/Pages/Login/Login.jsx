@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { useSignup } from "../Hooks/useSignup";
 
-const Signup = () => {
+import { useLogin } from "../../Hooks/useLogin";
+
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signup, error, isLoading } = useSignup();
+  const { login, error, isLoading } = useLogin();
 
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    await signup(email, password);
+    await login(email, password);
   };
 
   return (
-    <div>
-      <form>
-        <h3>Signup</h3>
+    <div className="h-screen py-[150px] px-[500px]">
+      <form className="flex flex-col h-full justify-center items-center">
+        <h3>Login</h3>
 
         <label>Email:</label>
         <input
@@ -32,8 +33,8 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button disabled={isLoading} onClick={handleSignup}>
-          Signup
+        <button disabled={isLoading} onClick={handleLogin}>
+          Login
         </button>
         {error && <div>{error}</div>}
       </form>
@@ -41,4 +42,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

@@ -1,3 +1,3 @@
 # Pixels
 
-The eye should learn to listen before it looks!!
+The eye should learn to listen before it looks!

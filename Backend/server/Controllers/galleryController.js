@@ -1,4 +1,6 @@
 const Photo = require("../Models/dbGallery");
+const User = require("../Models/dbUser");
+
 const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require("fs");
@@ -30,7 +32,11 @@ const uploadImage = upload.single("image");
 
 // GET all photos
 const getPhotos = async (req, res) => {
-  const photos = await Photo.find({}).sort({ createdAt: -1 });
+  // const user = await User.findOne({ username: req.params.username });
+  // const photos = await Photo.find({ userEmail: user.email }).sort({
+  const photos = await Photo.find({}).sort({
+    createdAt: -1,
+  });
   res.status(200).json(photos);
 };
 
@@ -55,6 +61,7 @@ const getPhoto = async (req, res) => {
 const createPhoto = async (req, res) => {
   const savePhoto = new Photo({
     title: req.body.title,
+    // userEmail: req.body.userEmail,
     image: {
       data: fs.readFileSync("Uploads/" + req.file.filename),
       contentType: "image/png",

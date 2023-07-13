@@ -13,6 +13,11 @@ const photoSchema = new Schema(
       default: Date.now,
       required: true,
     },
+    // userEmail: {
+    //   type: String,
+    //   required: true,
+    //   unique: false,
+    // },
     image: {
       data: Buffer,
       contentType: String,

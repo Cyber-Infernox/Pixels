@@ -2,33 +2,33 @@ const Photo = require("../Models/dbGallery");
 const User = require("../Models/dbUser");
 
 const mongoose = require("mongoose");
-const multer = require("multer");
-const fs = require("fs");
+// const multer = require("multer");
+// const fs = require("fs");
 
-const Storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, "uploads");
-  },
-  filename: (req, file, callback) => {
-    const ext = file.mimetype.split("/")[1];
-    callback(null, `image-${Date.now()}.${ext}`);
-  },
-});
+// const Storage = multer.diskStorage({
+//   destination: (req, file, callback) => {
+//     callback(null, "uploads");
+//   },
+//   filename: (req, file, callback) => {
+//     const ext = file.mimetype.split("/")[1];
+//     callback(null, `image-${Date.now()}.${ext}`);
+//   },
+// });
 
-const isImage = (req, file, callback) => {
-  if (file.mimetype.startsWith("image")) {
-    callback(null, true);
-  } else {
-    callback(new Error("Only images are allowed..."));
-  }
-};
+// const isImage = (req, file, callback) => {
+//   if (file.mimetype.startsWith("image")) {
+//     callback(null, true);
+//   } else {
+//     callback(new Error("Only images are allowed..."));
+//   }
+// };
 
-const upload = multer({
-  storage: Storage,
-  fileFilter: isImage,
-});
+// const upload = multer({
+//   storage: Storage,
+//   fileFilter: isImage,
+// });
 
-const uploadImage = upload.single("image");
+// const uploadImage = upload.single("image");
 
 // GET all photos
 const getPhotos = async (req, res) => {
@@ -59,36 +59,14 @@ const getPhoto = async (req, res) => {
 
 // POST a photo
 const createPhoto = async (req, res) => {
-  const savePhoto = new Photo({
-    title: req.body.title,
-    // userEmail: req.body.userEmail,
-    image: {
-      data: fs.readFileSync("Uploads/" + req.file.filename),
-      contentType: "image/png",
-    },
-  });
-  savePhoto
-    .save()
-    .then((res) => {
-      console.log("Image is saved");
-    })
-    .catch((err) => {
-      console.log("Error has occurred");
-    });
-  res.send("Image is saved");
+  const newPost = new Photo(req.body);
+  try {
+    const savedPost = await newPost.save();
+    res.status(200).json(savedPost);
+  } catch (err) {
+    console.log(err);
+  }
 };
-
-//   const { title } = req.body;
-//   const image = req.file;
-//   console.log(image);
-
-//   try {
-//     const photo = await Photo.create({ title });
-//     res.status(200).json(photo);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
 
 // DELETE a photo
 const deletePhoto = async (req, res) => {
@@ -130,7 +108,6 @@ const updatePhoto = async (req, res) => {
 };
 
 module.exports = {
-  uploadImage,
   createPhoto,
   getPhotos,
   getPhoto,

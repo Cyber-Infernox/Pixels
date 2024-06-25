@@ -5,7 +5,6 @@ const {
   getPhotos,
   deletePhoto,
   updatePhoto,
-  uploadImage,
 } = require("../Controllers/galleryController");
 
 const router = express.Router();
@@ -17,7 +16,7 @@ router.get("/", getPhotos);
 router.get("/:id", getPhoto);
 
 // POST a photo
-router.post("/", uploadImage, createPhoto);
+router.post("/", createPhoto);
 
 // DELETE a photo
 router.delete("/:id", deletePhoto);

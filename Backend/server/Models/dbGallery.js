@@ -13,14 +13,12 @@ const photoSchema = new Schema(
       default: Date.now,
       required: true,
     },
-    // userEmail: {
-    //   type: String,
-    //   required: true,
-    //   unique: false,
-    // },
+    userEmail: {
+      type: String,
+      required: true,
+    },
     image: {
-      data: Buffer,
-      contentType: String,
+      type: String,
     },
     // likes: [{ type: ObjectId, ref: "User" }],
   },
